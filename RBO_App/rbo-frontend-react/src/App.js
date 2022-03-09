@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AuthService from "./services/auth.service";
@@ -8,8 +8,8 @@ import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
-// import BoardEmployee from "./components/board-moderator.component";
-// import BoardAdmin from "./components/board-admin.component";
+import BoardEmployee from "./components/board-employee.component";
+import BoardAdmin from "./components/board-admin.component";
 
 class App extends Component {
   constructor(props) {
@@ -99,18 +99,18 @@ class App extends Component {
           )}
         </nav>
         <div className="container mt-3">
-          <Routes>
-            <Route exact path="/" element={<Home/>} />
-            <Route exact path="/login" element={<Login/>} />
-            <Route exact path="/register" element={<Register/>} />
-            <Route exact path="/profile" element={<Profile/>} />
-            <Route exact path="/user" element={<BoardUser/>} />
-            {/* <Route path="/mod" element={BoardEmployee} />
-            <Route path="/admin" element={BoardAdmin} /> */}
-          </Routes>
+          <Switch>
+          <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/profile" component={Profile} />
+            <Route path="/user" component={BoardUser} />
+            <Route path="/mod" component={BoardEmployee} />
+            <Route path="/admin" component={BoardAdmin} /> 
+          </Switch>
         </div>
       </div>
     );
   }
 }
-export default App;
+export default withRouter(App);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import UserService from "../services/user.service";
 
-export default class BoardEmployee extends Component {
+export default class BoardAdmin extends Component {
   constructor(props) {
     super(props);
 
@@ -12,7 +12,7 @@ export default class BoardEmployee extends Component {
   }
 
   componentDidMount() {
-    UserService.getEmployeeBoard().then(
+    UserService.getAdminBoard().then(
       response => {
         this.setState({
           content: response.data
@@ -27,6 +27,7 @@ export default class BoardEmployee extends Component {
             error.message ||
             error.toString()
         });
+
       }
     );
   }
