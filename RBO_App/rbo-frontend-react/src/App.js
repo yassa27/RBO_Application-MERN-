@@ -10,6 +10,8 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardEmployee from "./components/board-employee.component";
 import BoardAdmin from "./components/board-admin.component";
+import AuthVerify from "./common/auth-verify";
+import EventBus from "./common/EventBus";
 
 class App extends Component {
   constructor(props) {
@@ -30,9 +32,21 @@ class App extends Component {
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
+    EventBus.on("logout", () => {
+      this.logOut();
+    });
   }
+  componentWillUnmount() {
+    EventBus.remove("logout");
+  }
+  
   logOut() {
     AuthService.logout();
+    this.setState({
+      showEmployeeBoard: false,
+      showAdminBoard: false,
+      currentUser: undefined,
+    });
   }
   render() {
     const { currentUser, showEmployeeBoard, showAdminBoard } = this.state;
@@ -109,6 +123,7 @@ class App extends Component {
             <Route path="/admin" component={BoardAdmin} /> 
           </Switch>
         </div>
+        <AuthVerify logOut={this.logOut}/>
       </div>
     );
   }
