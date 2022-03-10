@@ -1,12 +1,12 @@
 module.exports = app => {
-    const purchaserequests = require("../controllers/purchaserequest.controller");
+    const purchaserequests = require("../controllers/purchaserequest.controller.js");
     var router = require("express").Router();
     // Create a new Tutorial
     router.post("/", purchaserequests.create);
-    // Retrieve all purchaserequests
+    // Retrieve all Tutorials
     router.get("/", purchaserequests.findAll);
-    // Retrieve all published purchaserequests
-    router.get("/published", purchaserequests.findAllPublished);
+    // Retrieve all published Tutorials
+    router.get("/published", purchaserequests.findAllrequested);
     // Retrieve a single Tutorial with id
     router.get("/:id", purchaserequests.findOne);
     // Update a Tutorial with id
@@ -16,4 +16,4 @@ module.exports = app => {
     // Create a new Tutorial
     router.delete("/", purchaserequests.deleteAll);
     app.use('/api/purchaserequests', router);
-  };
+  }

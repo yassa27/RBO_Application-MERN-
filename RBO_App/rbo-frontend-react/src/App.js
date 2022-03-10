@@ -12,7 +12,9 @@ import BoardEmployee from "./components/board-employee.component";
 import BoardAdmin from "./components/board-admin.component";
 import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
-
+import PurchaseRequestList from "./components/purchaserequest-list.component";
+import Purchaserequest from "./components/purchaserequest.component";
+import AddPurchaseRequest from "./components/add-purchaserequest.component";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -83,6 +85,20 @@ class App extends Component {
                 </Link>
               </li>
             )}
+            {currentUser && (
+              <li className="nav-item">
+                <Link to={"/purchaserequests"} className="nav-link">
+                Purchase Requests
+                </Link>
+              </li>
+            )}
+            {currentUser && (
+              <li className="nav-item">
+                <Link to={"/add"} className="nav-link">
+                Add Purchase Requests
+                </Link>
+              </li>
+            )}
           </div>
           {currentUser ? (
             <div className="navbar-nav ml-auto">
@@ -121,6 +137,9 @@ class App extends Component {
             <Route path="/user" component={BoardUser} />
             <Route path="/mod" component={BoardEmployee} />
             <Route path="/admin" component={BoardAdmin} /> 
+            <Route path="/purchaserequests/:id" component={Purchaserequest} />
+            <Route path="/add" component={AddPurchaseRequest} />
+            <Route path="/purchaserequestslist" component={PurchaseRequestList} />
           </Switch>
         </div>
         <AuthVerify logOut={this.logOut}/>
