@@ -167,7 +167,6 @@ export default class PurchaseRequestList extends Component {
                 </label>{" "}
                 {currentPurchaseRequest.requested ? "Requested" : "Pending"}
               </div>
-
               <Link
                 to={"/purchaserequests/" + currentPurchaseRequest.id}
                 className="badge badge-warning"

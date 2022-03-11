@@ -1,7 +1,6 @@
+
 const express = require("express");
 const cors = require("cors");
-
-
 const dbConfig = require("./config/db.config");
 
 const app = express();
@@ -9,6 +8,23 @@ const app = express();
 var corsOptions = {
   origin: "http://localhost:8081"
 };
+
+// Creating the chat socket
+var chatSocket = require('socket.io')(
+  {
+      cors: {
+          origins: ['http://localhost:8080']
+      }
+  }
+);
+// Importing the chat controller
+var chatController = require('./controllers/chat.controller');
+
+var chat = chatSocket
+  .of('/chat') //We are defining an endpoint for the chat
+  .on('connection', function (socket) {
+      chatController.respond(chat,socket);
+  })
 
 app.use(cors(corsOptions));
 
@@ -39,6 +55,7 @@ db.mongoose
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to RBO application." });
 });
+
 
 // routes
 require("./routes/auth.routes")(app);
@@ -86,3 +103,4 @@ function initial() {
     }
   });
 }
+module.exports = {app, chatSocket}; 
