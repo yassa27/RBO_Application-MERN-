@@ -13,7 +13,7 @@ export default class PurchaseRequestList extends Component {
     this.searchTitle = this.searchTitle.bind(this);
 
     this.state = {
-      retrievePurchaseRequests: [],
+      purchaserequests: [],
       currentPurchaseRequest: null,
       currentIndex: -1,
       searchTitle: ""
@@ -36,7 +36,7 @@ export default class PurchaseRequestList extends Component {
     PurchaserequestDataService.getAll()
       .then(response => {
         this.setState({
-          retrievePurchaseRequests: response.data
+          purchaserequests: response.data
         });
         console.log(response.data);
       })
@@ -73,10 +73,9 @@ export default class PurchaseRequestList extends Component {
 
   searchTitle() {
     this.setState({
-      currentTutorial: null,
+      currentPurchaseRequest: null,
       currentIndex: -1
     });
-
     PurchaserequestDataService.findByTitle(this.state.searchTitle)
       .then(response => {
         this.setState({

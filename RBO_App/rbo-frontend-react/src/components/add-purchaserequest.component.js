@@ -101,13 +101,13 @@ export default class AddPurchaseRequest extends Component {
                 id="bookTitle"
                 required
                 value={this.state.bookTitle}
-                onChange={this.onChangebookTitle}
+                onChange={this.onChangeBookTitle}
                 name="bookTitle"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="bookType">Book Author</label>
+              <label htmlFor="bookAuthor">Book Author</label>
               <input
                 type="text"
                 className="form-control"

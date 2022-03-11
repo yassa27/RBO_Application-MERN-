@@ -139,7 +139,7 @@ class App extends Component {
             <Route path="/admin" component={BoardAdmin} /> 
             <Route path="/purchaserequests/:id" component={Purchaserequest} />
             <Route path="/add" component={AddPurchaseRequest} />
-            <Route path="/purchaserequestslist" component={PurchaseRequestList} />
+            <Route path="/purchaserequests" component={PurchaseRequestList} />
           </Switch>
         </div>
         <AuthVerify logOut={this.logOut}/>
