@@ -94,7 +94,7 @@ export default class AddPurchaseRequest extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="bookTitle">bookTitle</label>
+              <label htmlFor="bookTitle">Book Title</label>
               <input
                 type="text"
                 className="form-control"
@@ -131,7 +131,7 @@ export default class AddPurchaseRequest extends Component {
                 name="bookType"
               />
             </div>
-
+            <br/>
             <button onClick={this.savePurchaseRequest} className="btn btn-success">
               Submit
             </button>

@@ -10,7 +10,11 @@ const User = mongoose.model(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role"     //model association
       }
-    ]
+    ],
+    purchaserequests: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "purchaserequests"
+  }],
   })
 );
 module.exports = User;

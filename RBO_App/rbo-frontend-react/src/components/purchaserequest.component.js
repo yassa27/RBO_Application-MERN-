@@ -143,7 +143,7 @@ export default class Tutorial extends Component {
                   type="text"
                   className="form-control"
                   id="booktitle"
-                  value={currentPurchaserequest.booktitle}
+                  value={currentPurchaserequest.bookTitle}
                   onChange={this.onChangeTitle}
                 />
               </div>
@@ -153,7 +153,7 @@ export default class Tutorial extends Component {
                   type="text"
                   className="form-control"
                   id="bookauthor"
-                  value={currentPurchaserequest.bookauthor}
+                  value={currentPurchaserequest.bookAuthor}
                   onChange={this.onChangeBookauthor}
                 />
               </div>
@@ -163,7 +163,7 @@ export default class Tutorial extends Component {
                   type="text"
                   className="form-control"
                   id="booktype"
-                  value={currentPurchaserequest.booktype}
+                  value={currentPurchaserequest.bookType}
                   onChange={this.onChangeBooktype}
                 />
               </div>
@@ -172,7 +172,7 @@ export default class Tutorial extends Component {
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentPurchaserequest.requested ? "Requested" : "Pending"}
+                {currentPurchaserequest.requested ? "Requested" : "Not Requested"}
               </div>
             </form>
 
@@ -193,7 +193,7 @@ export default class Tutorial extends Component {
             )}
 
             <button
-              className="badge badge-danger mr-2"
+              className="badge badge-primary mr-2"
               onClick={this.deletePurchaserequest}
             >
               Delete

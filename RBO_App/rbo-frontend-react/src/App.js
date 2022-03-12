@@ -54,7 +54,7 @@ class App extends Component {
     const { currentUser, showEmployeeBoard, showAdminBoard } = this.state;
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <nav className="navbar navbar-expand navbar-dark bg-info">
           <Link to={"/"} className="navbar-brand">
             ReadBooks Online
           </Link>
@@ -66,13 +66,13 @@ class App extends Component {
             </li>
             {showEmployeeBoard && (
               <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
+                <Link to={"/employee"} className="nav-link">
                   Employee Board
                 </Link>
               </li>
             )}
             {showAdminBoard && (
-              <li className="nav-item">
+              <li className="nav-item " >
                 <Link to={"/admin"} className="nav-link">
                   Admin Board
                 </Link>
@@ -135,7 +135,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
-            <Route path="/mod" component={BoardEmployee} />
+            <Route path="/employee" component={BoardEmployee} />
             <Route path="/admin" component={BoardAdmin} /> 
             <Route path="/purchaserequests/:id" component={Purchaserequest} />
             <Route path="/add" component={AddPurchaseRequest} />

@@ -1,3 +1,6 @@
+const db = require("../models")
+const User = db.users;
+
 exports.allAccess = (req, res) => {
     res.status(200).send("Public Content.");
   };
@@ -10,3 +13,4 @@ exports.allAccess = (req, res) => {
   exports.employeeBoard = (req, res) => {
     res.status(200).send("Employee Content.");
   };
+
