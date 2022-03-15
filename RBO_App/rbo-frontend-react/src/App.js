@@ -7,7 +7,6 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
-import BoardUser from "./components/board-user.component";
 import BoardEmployee from "./components/board-employee.component";
 import BoardAdmin from "./components/board-admin.component";
 import AuthVerify from "./common/auth-verify";
@@ -15,6 +14,7 @@ import EventBus from "./common/EventBus";
 import PurchaseRequestList from "./components/purchaserequest-list.component";
 import Purchaserequest from "./components/purchaserequest.component";
 import AddPurchaseRequest from "./components/add-purchaserequest.component";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -67,21 +67,14 @@ class App extends Component {
             {showEmployeeBoard && (
               <li className="nav-item">
                 <Link to={"/employee"} className="nav-link">
-                  Employee Board
+                  Employee Control
                 </Link>
               </li>
             )}
             {showAdminBoard && (
               <li className="nav-item " >
                 <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-            )}
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
+                  Admin Control
                 </Link>
               </li>
             )}
@@ -89,13 +82,6 @@ class App extends Component {
               <li className="nav-item">
                 <Link to={"/purchaserequests"} className="nav-link">
                 Purchase Requests
-                </Link>
-              </li>
-            )}
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/add"} className="nav-link">
-                Add Purchase Requests
                 </Link>
               </li>
             )}
@@ -134,7 +120,6 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-            <Route path="/user" component={BoardUser} />
             <Route path="/employee" component={BoardEmployee} />
             <Route path="/admin" component={BoardAdmin} /> 
             <Route path="/purchaserequests/:id" component={Purchaserequest} />

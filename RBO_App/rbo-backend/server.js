@@ -8,6 +8,22 @@ var corsOptions = {
   origin: "http://localhost:8081"
 };
 
+var chatSocket = require('socket.io')(
+  {
+      cors: {
+          origins: ['http://localhost:8080']
+      }
+  }
+);
+
+var chatController = require("./controllers/chat.controller");
+
+var chat = chatSocket
+    .of('/chat') //API endpoint
+    .on('connection', function (socket) {
+        chatController.respond(chat,socket);
+    });
+
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
@@ -85,4 +101,4 @@ function initial() {
     }
   });
 }
-module.exports = {app}; 
+module.exports = {app, chatSocket}; 

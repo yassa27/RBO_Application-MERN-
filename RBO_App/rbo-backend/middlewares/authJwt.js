@@ -16,6 +16,34 @@ verifyToken = (req, res, next) => {
     next();
   });
 };
+isLoggedIn = (req, res, next) => {
+  User.findById(req.userId).exec((err, user) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    Role.find(
+      {
+        _id: { $in: user.roles }
+      },
+      (err, roles) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+        for (let i = 0; i < roles.length; i++) {
+          if (roles[i].name === "admin" ||roles[i].name === "employee" ||roles[i].name === "user") {
+            next();
+            return;
+          }
+        }
+        res.status(403).send({ message: "Require Account!" });
+        return;
+      }
+    );
+  });
+};
+
 isAdmin = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {
     if (err) {
@@ -43,6 +71,7 @@ isAdmin = (req, res, next) => {
     );
   });
 };
+
 isEmployee = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {
     if (err) {

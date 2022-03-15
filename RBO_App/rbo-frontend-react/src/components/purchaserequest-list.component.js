@@ -9,14 +9,13 @@ export default class PurchaseRequestList extends Component {
     this.retrievePurchaseRequests = this.retrievePurchaseRequests.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActivePurchaseRequests = this.setActivePurchaseRequests.bind(this);
-    this.removeAllPurchaseRequests = this.removeAllPurchaseRequests.bind(this);
     this.searchTitle = this.searchTitle.bind(this);
 
     this.state = {
       purchaserequests: [],
       currentPurchaseRequest: null,
       currentIndex: -1,
-      searchTitle: ""
+      searchTitle: " "
     };
   }
 
@@ -58,17 +57,6 @@ export default class PurchaseRequestList extends Component {
       currentPurchaseRequest: purchaserequest,
       currentIndex: index
     });
-  }
-
-  removeAllPurchaseRequests() {
-    PurchaserequestDataService.deleteAll()
-      .then(response => {
-        console.log(response.data);
-        this.refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
   }
 
   searchTitle() {
@@ -132,12 +120,6 @@ export default class PurchaseRequestList extends Component {
               ))}
           </ul>
 
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllPurchaseRequests}
-          >
-            Remove All
-          </button>
         </div>
         <div className="col-md-6">
           {currentPurchaseRequest ? (
@@ -179,6 +161,10 @@ export default class PurchaseRequestList extends Component {
               >
                 Edit
               </Link>
+              <br/>
+              <Link to={"/add"}  className="badge badge-success">
+                Add Purchase Requests
+            </Link>
             </div>
           ) : (
             <div>

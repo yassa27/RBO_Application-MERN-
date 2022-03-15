@@ -1,6 +1,6 @@
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let server = require('../server');
+let app = require('../server');
 let should = chai.should();
 
 let mongoose = require('mongoose');
@@ -8,28 +8,11 @@ let Purchaserequest = require('../models/purchaserequest.model');
 
 chai.use(chaiHttp);
 
-//the parent block
-describe('Testing the /purchaserequests path', () => {
-    //Testing GET /purchaserequests
-    // describe('GET /purchaserequests', () => {
-    //     it('it should return a welcome message', (done) => {
-    //         chai.request(server)
-    //         .get('/purchaserequests')
-    //         .end((err, res) => {
-    //             res.should.have.status(200);
-    //             res.body.should.be.a('object');
-    //             res.body.should.have.property('message');
-    //             res.body.should.have.property('message').eql('Welcome to the RBO api');
-    //             done();
-    //         });
-    //     });
-    // });
-    // Finished GET /purchaserequests
     
     //Testing GET /purchaserequests
     describe('GET /purchaserequests', () => {
         it('it should GET all the purchaserequests', (done) => {
-            chai.request(server)
+            chai.request(app)
             .get('/purchaserequests')
             .end((err, res) => {
                 res.should.have.status(200);
@@ -48,7 +31,7 @@ describe('Testing the /purchaserequests path', () => {
                 bookTitle: "book1",
                 bookAuthor: "author1",
             };
-            chai.request(server)
+            chai.request(app)
                 .post('/purchaserequests')
                 .send(purchaserequest)
                 .end((err, res) => {
@@ -68,7 +51,7 @@ describe('Testing the /purchaserequests path', () => {
                 allocated: false,
                 approved: false 
             }; 
-            chai.request(server)
+            chai.request(app)
                 .post('/purchaserequests')
                 .send(purchaserequest)
                 .end((err, res) => {
@@ -85,4 +68,3 @@ describe('Testing the /purchaserequests path', () => {
         });
     });
     //Finished POST /purchaserequests/pets
-});
