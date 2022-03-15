@@ -1,5 +1,3 @@
-const { authJwt } = require("../middlewares");
-const controller = require("../controllers/user.controller");
 
 module.exports = app => {
     const purchaserequests = require("../controllers/purchaserequest.controller.js");
@@ -20,3 +18,4 @@ module.exports = app => {
     router.delete("/", purchaserequests.deleteAll);
     app.use('/api/purchaserequests', router);
   }
+  

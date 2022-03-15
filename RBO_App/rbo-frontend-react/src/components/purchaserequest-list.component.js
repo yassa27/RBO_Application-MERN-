@@ -80,8 +80,8 @@ export default class PurchaseRequestList extends Component {
     const { searchTitle, purchaserequests, currentPurchaseRequest, currentIndex } = this.state;
 
     return (
-      <div className="list row">
-        <div className="col-md-8">
+      <div className="list row ">
+        <div className="col-md-12">
           <div className="input-group mb-3">
             <input
               type="text"
@@ -98,8 +98,8 @@ export default class PurchaseRequestList extends Component {
               >
                 Search
               </button>
+              </div>
             </div>
-          </div>
         </div>
         <div className="col-md-6">
           <h4>Purchase Requests List</h4>

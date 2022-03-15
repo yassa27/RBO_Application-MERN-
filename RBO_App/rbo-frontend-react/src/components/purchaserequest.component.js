@@ -193,7 +193,7 @@ export default class Tutorial extends Component {
             )}
 
             <button
-              className="badge badge-primary mr-2"
+              className="badge badge-danger mr-2"
               onClick={this.deletePurchaserequest}
             >
               Delete

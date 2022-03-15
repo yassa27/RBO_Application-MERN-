@@ -54,7 +54,7 @@ class App extends Component {
     const { currentUser, showEmployeeBoard, showAdminBoard } = this.state;
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-info">
+        <nav className="navbar navbar-expand navbar-dark bg-primary">
           <Link to={"/"} className="navbar-brand">
             ReadBooks Online
           </Link>
@@ -65,7 +65,7 @@ class App extends Component {
               </Link>
             </li>
             {showEmployeeBoard && (
-              <li className="nav-item">
+              <li className="nav-item br-dark">
                 <Link to={"/employee"} className="nav-link">
                   Employee Control
                 </Link>
@@ -95,7 +95,7 @@ class App extends Component {
               </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
+                  Log Out
                 </a>
               </li>
             </div>
