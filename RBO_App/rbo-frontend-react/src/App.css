@@ -85,3 +85,6 @@ body{
   background-color: #c0d0d4;
   font-family: “Playfair Display”, “Didot”, "Times New Roman", Times, serif; 
 }
+.custom {
+  width: 78px;
+}

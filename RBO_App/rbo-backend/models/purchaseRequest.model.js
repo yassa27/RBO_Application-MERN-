@@ -7,8 +7,12 @@ module.exports = mongoose => {
         requested: Boolean,
         allocated: Boolean,
         approved: Boolean,
-      },
-      { timestamps: true }
+        user: [{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "users"
+      }],
+    },
+      { timestamps: true },
     );
   
     schema.method("toJSON", function() {

@@ -54,8 +54,8 @@ export default class BoardAdmin extends Component {
         <header className="jumbotron">
           <h3>{this.state.content}</h3>
         </header>
-        <div className="col-md-11">
         <PurchaserequestList />
+        <div className="list row">
           <button
             className="m-3 btn btn-sm btn-danger"
             onClick={this.removeAllPurchaseRequests}

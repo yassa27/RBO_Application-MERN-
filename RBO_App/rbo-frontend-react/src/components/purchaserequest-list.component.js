@@ -155,6 +155,12 @@ export default class PurchaseRequestList extends Component {
                 </label>{" "}
                 {currentPurchaseRequest.createdAt}
               </div>
+              <div>
+                <label>
+                  <strong>Updated at:</strong>
+                </label>{" "}
+                {currentPurchaseRequest.updatedAt}
+              </div>
               <Link
                 to={"/purchaserequests/" + currentPurchaseRequest.id}
                 className="badge badge-warning"
