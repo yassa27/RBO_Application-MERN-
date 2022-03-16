@@ -2,6 +2,7 @@ module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
         bookTitle: String, 
+        bookAuthor: String,
         bookType: String,
         requested: Boolean,
         allocated: Boolean,

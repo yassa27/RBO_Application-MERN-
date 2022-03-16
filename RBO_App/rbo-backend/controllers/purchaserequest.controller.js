@@ -3,8 +3,16 @@ const Purchaserequest = db.purchaserequests;
 
 // Create and Save a new Purchase Request
 exports.create = (req, res) => {
-    // Validate request
+    // Validate request and confirm all fields have been inputted
     if (!req.body.bookTitle) {
+      res.status(400).send({ message: "Content can not be empty!" });
+      return;
+    }
+    if (!req.body.bookAuthor) {
+      res.status(400).send({ message: "Content can not be empty!" });
+      return;
+    }
+    if (!req.body.bookType) {
       res.status(400).send({ message: "Content can not be empty!" });
       return;
     }
