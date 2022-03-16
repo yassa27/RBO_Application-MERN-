@@ -30,8 +30,9 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
+        //only show boards after role verification
         showEmployeerBoard: user.roles.includes("ROLE_EMPLOYEE"),
-        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        showAdminBoard: user.roles.includes("ROLE_ADMIN")
       });
     }
     EventBus.on("logout", () => {
@@ -65,7 +66,7 @@ class App extends Component {
               </Link>
             </li>
             {showEmployeeBoard && (
-              <li className="nav-item br-dark">
+              <li className="nav-item ">
                 <Link to={"/employee"} className="nav-link">
                   Employee Control
                 </Link>

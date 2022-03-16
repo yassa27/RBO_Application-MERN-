@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PurchaseRequestService from "../services/purchaseRequest.service";
 
-export default class Tutorial extends Component {
+//individual purchase request page
+export default class PurchaseRequest extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);

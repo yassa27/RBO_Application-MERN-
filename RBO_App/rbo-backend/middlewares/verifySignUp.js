@@ -1,8 +1,9 @@
 const db = require("../models");
 const ROLES = db.ROLES;
 const User = db.user;
+//check input verification, not allowing incorrect data to be passed
 checkDuplicateUsernameOrEmail = (req, res, next) => {
-  // Username
+
   User.findOne({
     username: req.body.username
   }).exec((err, user) => {
@@ -14,7 +15,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
       res.status(400).send({ message: "Failed! Username is already in use!" });
       return;
     }
-    // Email
+
     User.findOne({
       email: req.body.email
     }).exec((err, user) => {
@@ -30,6 +31,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
     });
   });
 };
+
 checkRolesExisted = (req, res, next) => {
   if (req.body.roles) {
     for (let i = 0; i < req.body.roles.length; i++) {
@@ -43,8 +45,10 @@ checkRolesExisted = (req, res, next) => {
   }
   next();
 };
+
 const verifySignUp = {
   checkDuplicateUsernameOrEmail,
   checkRolesExisted
 };
+
 module.exports = verifySignUp

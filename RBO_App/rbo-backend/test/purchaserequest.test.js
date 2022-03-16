@@ -22,7 +22,6 @@ chai.use(chaiHttp);
             });
         });
     });
-    //Finished GET /purchaserequests
     
     //Testing POST /purchaserequests
     describe('POST /purchaserequests', () => {
@@ -67,4 +66,4 @@ chai.use(chaiHttp);
                 });
         });
     });
-    //Finished POST /purchaserequests/pets
+

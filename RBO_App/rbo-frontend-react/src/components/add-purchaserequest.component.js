@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PurchaserequestDataService from "../services/purchaseRequest.service";
 
 export default class AddPurchaseRequest extends Component {
+  //initialisation
   constructor(props) {
     super(props);
     this.onChangeBookTitle = this.onChangeBookTitle.bind(this);
@@ -22,7 +23,7 @@ export default class AddPurchaseRequest extends Component {
       submitted: false
     };
   }
-
+  //Reading user input to pass to database
   onChangeBookTitle(e) {
     this.setState({
       bookTitle: e.target.value
@@ -40,7 +41,7 @@ export default class AddPurchaseRequest extends Component {
         bookType: e.target.value
     });
   }
-
+//add purchaserequest to rbodb, purchaserequest collection
   savePurchaseRequest() {
     var data = {
       bookTitle: this.state.bookTitle,

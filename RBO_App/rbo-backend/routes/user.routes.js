@@ -9,6 +9,7 @@ module.exports = app => {
     );
     next();
   });
+//api routes to test user role verification
 
   app.get("/api/test/all", controller.allAccess);
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PurchaserequestDataService from "../services/purchaseRequest.service";
 import { Link } from "react-router-dom";
 
+//purchase request list page
 export default class PurchaseRequestList extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,7 @@ export default class PurchaseRequestList extends Component {
       purchaserequests: [],
       currentPurchaseRequest: null,
       currentIndex: -1,
-      searchTitle: " "
+      searchTitle: ""
     };
   }
 
@@ -64,6 +65,7 @@ export default class PurchaseRequestList extends Component {
       currentPurchaseRequest: null,
       currentIndex: -1
     });
+
     PurchaserequestDataService.findByTitle(this.state.searchTitle)
       .then(response => {
         this.setState({

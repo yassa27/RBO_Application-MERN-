@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AuthService from "../services/auth.service";
 
+//user profile page
 export default class Profile extends Component {
   constructor(props) {
     super(props);

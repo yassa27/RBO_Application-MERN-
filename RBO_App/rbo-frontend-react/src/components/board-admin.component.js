@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-
 import UserService from "../services/user.service";
 import PurchaserequestDataService from "../services/purchaseRequest.service";
 import PurchaserequestList from "../components/purchaserequest-list.component";
 
-
+//admin view
 export default class BoardAdmin extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,7 @@ export default class BoardAdmin extends Component {
     };
   }
 
-  
+//only admins can remove all purchase requests
   removeAllPurchaseRequests() {
     PurchaserequestDataService.deleteAll()
       .then(response => {

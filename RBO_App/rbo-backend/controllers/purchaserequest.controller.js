@@ -1,5 +1,6 @@
 const db = require("../models");
 const Purchaserequest = db.purchaserequests;
+
 // Create and Save a new Purchase Request
 exports.create = (req, res) => {
     // Validate request
@@ -32,7 +33,7 @@ exports.create = (req, res) => {
       });
 
   }
-// Retrieve all Purchase Request from the database.
+// Get all Purchase Requests from the database.
 exports.findAll = (req, res) => {
     const bookTitle = req.query.bookTitle;
     var condition = bookTitle ? { bookTitle: { $regex: new RegExp(bookTitle), $options: "i" } } : {};
@@ -47,7 +48,7 @@ exports.findAll = (req, res) => {
         });
       });
   };
-// Find a single Purchase Request with an id
+// Find a single Purchase Request with an id in request
 exports.findOne = (req, res) => {
     const id = req.params.id;
     Purchaserequest.findById(id)
@@ -62,7 +63,8 @@ exports.findOne = (req, res) => {
           .send({ message: "Error retrieving PurchaseRequest with id=" + id });
       });
   };
-// Update a Tutorial by the id in the request
+
+// Update a Purchase Request with id in the request
 exports.update = (req, res) => {
     if (!req.body) {
       return res.status(400).send({
@@ -84,7 +86,7 @@ exports.update = (req, res) => {
         });
       });
   };
-// Delete a PurchaseRequest with the specified id in the request
+// Delete a PurchaseRequest with the id in request
 exports.delete = (req, res) => {
     const id = req.params.id;
     Purchaserequest.findByIdAndRemove(id)
@@ -133,7 +135,7 @@ exports.findAllrequested = (req, res) => {
         });
       });
   };
-  // Find all allocated PurchaseRequests
+// Find all allocated PurchaseRequests
 exports.findAllallocated = (req, res) => {
   Purchaserequest.find({ allocated: true })
     .then(data => {
@@ -147,7 +149,7 @@ exports.findAllallocated = (req, res) => {
     });
 };
 
-  // Find all approved PurchaseRequests
+// Find all approved PurchaseRequests
   exports.findAllapproved = (req, res) => {
     Purchaserequest.find({ approved: true })
       .then(data => {

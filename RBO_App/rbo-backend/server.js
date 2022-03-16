@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dbConfig = require("./config/db.config");
+const Message = require('./models/message.model');
+
 
 const app = express();
 
@@ -15,7 +17,6 @@ var chatSocket = require('socket.io')(
       }
   }
 );
-
 var chatController = require("./controllers/chat.controller");
 
 var chat = chatSocket
@@ -23,6 +24,20 @@ var chat = chatSocket
     .on('connection', function (socket) {
         chatController.respond(chat,socket);
     });
+
+chatSocket.on('message', (msg) => {
+  // Create a message with the content and the name of the user.
+  const message = new Message({
+    content: msg.content,
+    username: msg.username,
+  });
+
+  // Save the message to the database.
+  message.save((err) => {
+    if (err) return console.error(err);
+  });
+  socket.broadcast.emit('push', msg);
+})
 
 app.use(cors(corsOptions));
 
@@ -66,6 +81,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
+//automatic population of database if empty
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {

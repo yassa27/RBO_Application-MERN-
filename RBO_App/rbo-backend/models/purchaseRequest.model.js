@@ -1,12 +1,12 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
       {
-        bookTitle: String,
-        bookAuthor: String,
+        bookTitle: String, 
         bookType: String,
         requested: Boolean,
         allocated: Boolean,
         approved: Boolean,
+        //model association
         user: [{
           type: mongoose.Schema.Types.ObjectId,
           ref: "users"

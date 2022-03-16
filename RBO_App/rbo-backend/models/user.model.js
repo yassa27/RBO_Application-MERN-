@@ -13,7 +13,7 @@ const User = mongoose.model(
     ],
     purchaserequests: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: "purchaserequests"
+      ref: "purchaserequests" //model association
   }],
   })
 );

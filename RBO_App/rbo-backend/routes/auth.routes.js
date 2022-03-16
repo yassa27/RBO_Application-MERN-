@@ -9,7 +9,7 @@ module.exports = function(app) {
     );
     next();
   });
-
+// api request to signup and signin users
   app.post(
     "/api/auth/signup",
     [

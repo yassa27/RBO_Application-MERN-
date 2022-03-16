@@ -4,6 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
 
+//login page
 const required = value => {
   if (!value) {
     return (
@@ -69,6 +70,7 @@ export default class Login extends Component {
       });
     }
   }
+
   render() {
     return (
       <div className="col-md-12">

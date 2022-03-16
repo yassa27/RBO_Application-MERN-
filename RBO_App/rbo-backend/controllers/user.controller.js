@@ -1,6 +1,6 @@
 const db = require("../models")
 const User = db.users;
-
+//different users views based on role
 exports.allAccess = (req, res) => {
     res.status(200).send("Welcome To ReadBooks Online.");
   };
